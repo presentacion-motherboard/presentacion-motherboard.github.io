@@ -98,55 +98,65 @@
     .dual-img { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
     .dual-img .img-container { margin: 0; }
 
+    /* Terminal con texto más pequeño y sin scroll */
     .terminal {
       background: #0d1117;
-      border-radius: 18px;
-      box-shadow: 0 18px 30px rgba(0,0,0,0.6);
+      border-radius: 20px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.7);
       border: 1px solid #3a536b;
       overflow: hidden;
       font-family: var(--font-mono);
       width: 100%;
-      max-width: 480px;
-      margin: 0 auto;
+      max-width: 850px;
+      margin: 2rem auto 0;
     }
     .terminal-header {
       background: #1e2a36;
-      padding: 0.5rem 1rem;
+      padding: 0.8rem 1.5rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.6rem;
       border-bottom: 1px solid #2e4a62;
     }
-    .terminal-dots { display: flex; gap: 0.4rem; margin-right: 0.8rem; }
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-dots { display: flex; gap: 0.5rem; margin-right: 1rem; }
+    .dot { width: 14px; height: 14px; border-radius: 50%; }
     .dot.red { background: #ff5f56; }
     .dot.yellow { background: #ffbd2e; }
     .dot.green { background: #27c93f; }
     .terminal-title {
       color: #b4c6da;
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       font-family: var(--font-main);
-      opacity: 0.8;
+      opacity: 0.9;
     }
     .terminal-body {
-      padding: 1.5rem 1.2rem;
+      padding: 1.8rem 1rem;
       background: #0a121c;
-      min-height: 130px;
       display: flex;
       align-items: center;
+      justify-content: center;
+      overflow-x: visible;
     }
     .code-line {
-      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      font-size: clamp(0.9rem, 3.5vw, 2rem);
       font-family: var(--font-mono);
-      word-break: break-word;
-      white-space: normal;
+      white-space: nowrap;
       line-height: 1.4;
+      text-align: center;
+      max-width: 100%;
+      display: inline-block;
     }
     .code-line .keyword { color: #569cd6; font-weight: 600; }
     .code-line .function { color: #dcdcaa; }
     .code-line .string { color: #ce9178; }
     .code-line .paren { color: #ffd700; }
     .code-line .prompt { color: #6a9955; margin-right: 0.5rem; user-select: none; }
+
+    /* Ajuste extra para pantallas muy pequeñas */
+    @media (max-width: 500px) {
+      .code-line { font-size: 4.8vw; }
+      .terminal-body { padding: 1.5rem 0.5rem; }
+    }
 
     .spec-table {
       width: 100%; border-collapse: collapse; margin: 1.8rem 0;
@@ -170,7 +180,7 @@
     .btn-top:hover { background: #2563eb; transform: scale(1.02); }
 
     .footer { margin-top: 3rem; padding: 1.8rem 0; text-align: center; border-top: 1px solid var(--border-subtle); color: #8da0b5; font-size: 0.9rem; }
-    .flex-between { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
+    .flex-between { display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
     .text-accent { color: var(--accent-light); font-weight: 600; }
     hr { border: none; height: 1px; background: var(--border-subtle); margin: 2rem 0; }
 
@@ -184,6 +194,10 @@
       border-left: 6px solid var(--accent); backdrop-filter: blur(8px);
     }
 
+    .definicion-wrapper { display: flex; flex-direction: column; gap: 1.8rem; }
+    .definicion-text { width: 100%; }
+    .definicion-card { width: 100%; max-width: 450px; }
+
     @media (max-width: 700px) {
       .navbar { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 0.6rem 1.2rem; }
       .nav-links { gap: 0.8rem; width: 100%; justify-content: space-between; }
@@ -194,8 +208,7 @@
       .card-grid { gap: 1.2rem; }
       .card { padding: 1.3rem 1.1rem; }
       .spec-table th, .spec-table td { padding: 0.7rem 0.8rem; }
-      .code-line { font-size: 1.2rem; }
-      .terminal-body { padding: 1.2rem 1rem; }
+      .definicion-card { max-width: 100%; }
     }
 
     @media (max-width: 480px) {
@@ -249,17 +262,20 @@
 
     <section id="definicion">
       <h2>¿Qué es el motherboard?</h2>
-      <div class="flex-between">
-        <div style="flex:2;">
+      <div class="definicion-wrapper">
+        <div class="definicion-text">
           <p><strong class="text-accent">Circuito impreso (PCB)</strong> que actúa como factor común donde se interconectan CPU, RAM, almacenamiento y periféricos.</p>
-          <ul style="margin-top:1rem; list-style-type:'▹  '; padding-left:1.2rem;">
+          <ul style="margin-top:1.2rem; list-style-type:'▹  '; padding-left:1.2rem;">
             <li><strong>Hardware crítico</strong> – sin él la PC no arranca.</li>
             <li><strong>Define el techo de actualización</strong> – zócalo, RAM, buses.</li>
             <li><strong>Regula voltajes</strong> mediante VRM y capacitores.</li>
           </ul>
         </div>
-        <div style="flex:1;">
-          <div class="card"><h3>📌 Dato clave</h3><p>El motherboard es el <strong>"chasis"</strong> de la computadora: soporte mecánico y eléctrico de todo el sistema.</p></div>
+        <div class="definicion-card">
+          <div class="card">
+            <h3>📌 Dato clave</h3>
+            <p>El motherboard es el <strong>"chasis"</strong> de la computadora: soporte mecánico y eléctrico de todo el sistema.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -381,29 +397,27 @@
 
     <section id="cierre">
       <h2>Conclusión</h2>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;">
-        <div>
-          <p style="font-size:1.3rem; font-weight:500;">✓ El motherboard es el <span class="text-accent">núcleo estructural</span>.</p>
-          <ul style="list-style-type:'▹  '; line-height:1.8;">
-            <li>Interconecta todo el hardware crítico.</li>
-            <li>Chipset y buses gestionan comunicación.</li>
-            <li>Drivers y BIOS esenciales para funcionamiento.</li>
-          </ul>
-        </div>
-        <div class="terminal">
-          <div class="terminal-header">
-            <div class="terminal-dots">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-            <span class="terminal-title">python@exposicion:~</span>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <p style="font-size:1.3rem; font-weight:500; text-align:center;">✓ El motherboard es el <span class="text-accent">núcleo estructural</span>.</p>
+        <ul style="list-style-type:'▹  '; line-height:1.8; margin: 1.5rem 0 1.5rem 2rem;">
+          <li>Interconecta todo el hardware crítico.</li>
+          <li>Chipset y buses gestionan comunicación.</li>
+          <li>Drivers y BIOS esenciales para funcionamiento.</li>
+        </ul>
+      </div>
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
           </div>
-          <div class="terminal-body">
-            <div class="code-line">
-              <span class="prompt">>>> </span>
-              <span class="keyword">print</span><span class="paren">(</span><span class="string">"Gracias por su atención"</span><span class="paren">)</span>
-            </div>
+          <span class="terminal-title">python@exposicion:~</span>
+        </div>
+        <div class="terminal-body">
+          <div class="code-line">
+            <span class="prompt">>>> </span>
+            <span class="keyword">print</span><span class="paren">(</span><span class="string">"Gracias por su atención"</span><span class="paren">)</span>
           </div>
         </div>
       </div>
