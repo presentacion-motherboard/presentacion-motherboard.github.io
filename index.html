@@ -8,12 +8,12 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg-dark: #0a1118;
-      --bg-card: rgba(19, 32, 43, 0.85);
+      --bg-card: rgba(19, 32, 43, 0.9);
       --accent: #3b82f6;
       --accent-light: #60a5fa;
-      --text-primary: #f0f4fa;
-      --text-secondary: #b4c6da;
-      --border-subtle: #253c50;
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --border-subtle: #3a536b;
       --shadow-sm: 0 8px 20px rgba(0,0,0,0.3);
       --shadow-lg: 0 20px 35px rgba(0,0,0,0.5);
       --font-main: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -26,7 +26,7 @@
     }
     .video-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(5, 10, 15, 0.7); backdrop-filter: blur(2px);
+      background: rgba(5, 10, 15, 0.75); backdrop-filter: blur(2px);
       z-index: -1; pointer-events: none;
     }
     body {
@@ -43,20 +43,21 @@
     }
     h2 {
       font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 1.8rem; border-left: 6px solid var(--accent);
-      padding-left: 1.2rem; color: #e2e8f0;
+      padding-left: 1.2rem; color: #f1f5f9;
     }
-    h3 { font-size: clamp(1.3rem, 4vw, 1.6rem); margin-bottom: 0.8rem; color: #d9e2ef; display: flex; align-items: center; gap: 0.5rem; }
-    p, li { color: var(--text-secondary); font-size: 1rem; }
+    h3 { font-size: clamp(1.3rem, 4vw, 1.6rem); margin-bottom: 0.8rem; color: #e0e7ff; display: flex; align-items: center; gap: 0.5rem; }
+    p, li { color: var(--text-secondary); font-size: 1rem; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+    strong { color: white; font-weight: 600; }
     .container { max-width: 1300px; margin: 0 auto; padding: 1.5rem 1.8rem; position: relative; z-index: 2; }
     section { margin-bottom: 4rem; scroll-margin-top: 4rem; }
 
     /* Barra de navegación */
     .navbar {
-      position: sticky; top: 0; z-index: 100; background: rgba(8, 16, 24, 0.8);
+      position: sticky; top: 0; z-index: 100; background: rgba(8, 16, 24, 0.9);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle); padding: 0.6rem 1.8rem;
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     .logo {
       font-weight: 700; font-size: 1.3rem; letter-spacing: 1px;
@@ -66,7 +67,7 @@
       display: flex; flex-wrap: wrap; gap: 1.2rem; list-style: none;
     }
     .nav-links a {
-      text-decoration: none; color: var(--text-secondary); font-weight: 500;
+      text-decoration: none; color: #e0e7ff; font-weight: 500;
       font-size: 0.95rem; padding: 0.3rem 0; border-bottom: 2px solid transparent;
       transition: var(--transition);
     }
@@ -92,7 +93,7 @@
     .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.8rem; }
     .card {
       background: var(--bg-card); border-radius: 24px; padding: 1.5rem 1.3rem;
-      box-shadow: var(--shadow-sm); border: 1px solid rgba(59,130,246,0.2);
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(59,130,246,0.3);
       transition: var(--transition); backdrop-filter: blur(8px);
     }
     .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent-light); }
@@ -100,7 +101,7 @@
     .card li { margin-bottom: 0.4rem; padding-left: 0.3rem; font-size: 0.95rem; }
 
     .img-container {
-      margin: 2rem 0; text-align: center; background: rgba(12, 24, 34, 0.7);
+      margin: 2rem 0; text-align: center; background: rgba(12, 24, 34, 0.8);
       border-radius: 24px; padding: 1.2rem; border: 1px solid var(--border-subtle);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02); backdrop-filter: blur(8px);
     }
@@ -109,10 +110,10 @@
       box-shadow: 0 12px 25px rgba(0,0,0,0.7); display: block; margin: 0 auto;
       background: #1e2e3c; object-fit: contain; border: 1px solid #2e4a62;
     }
-    .img-caption { margin-top: 0.8rem; color: #9bb7d4; font-style: italic; font-size: 0.9rem; }
+    .img-caption { margin-top: 0.8rem; color: #cbd5e1; font-style: italic; font-size: 0.9rem; }
     .img-placeholder {
       background: #162b3b; min-height: 180px; display: flex; align-items: center;
-      justify-content: center; border-radius: 18px; color: #8ba9c7; font-weight: 500;
+      justify-content: center; border-radius: 18px; color: #cbd5e1; font-weight: 500;
       border: 1px dashed #3b5e7a; padding: 1.5rem; font-size: 0.95rem;
     }
 
@@ -144,7 +145,7 @@
     .dot.yellow { background: #ffbd2e; }
     .dot.green { background: #27c93f; }
     .terminal-title {
-      color: #b4c6da;
+      color: #cbd5e1;
       font-size: 0.95rem;
       font-family: var(--font-main);
       opacity: 0.9;
@@ -173,26 +174,41 @@
 
     .spec-table {
       width: 100%; border-collapse: collapse; margin: 1.8rem 0;
-      background: rgba(14, 26, 38, 0.8); border-radius: 18px; overflow: hidden;
+      background: rgba(14, 26, 38, 0.9); border-radius: 18px; overflow: hidden;
       box-shadow: var(--shadow-sm); backdrop-filter: blur(8px);
     }
     .spec-table th { background: #1c3142; color: white; font-weight: 600; padding: 0.8rem 1rem; text-align: left; font-size: 1rem; }
-    .spec-table td { padding: 0.8rem 1rem; border-bottom: 1px solid #1f3649; color: #cbd5e1; font-size: 0.95rem; }
+    .spec-table td { padding: 0.8rem 1rem; border-bottom: 1px solid #1f3649; color: #f1f5f9; font-size: 0.95rem; }
     .spec-table tr:last-child td { border-bottom: none; }
 
     .badge {
       background: var(--accent); color: white; font-size: 0.7rem; padding: 0.2rem 0.7rem;
       border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
     }
-    .btn-top {
-      display: inline-block; background: var(--accent); color: white; text-decoration: none;
-      padding: 0.7rem 1.8rem; border-radius: 40px; font-weight: 600; margin-top: 1.5rem;
-      transition: var(--transition); box-shadow: 0 4px 12px rgba(59,130,246,0.3);
-      font-size: 1rem;
+    
+    /* Botón Kahoot (cuadrado con bordes redondeados) */
+    .btn-kahoot {
+      display: inline-block;
+      background: #46178f; /* color temático kahoot */
+      color: white;
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 18px; /* bordes redondeados pero más cuadrado */
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 2rem 0 0.5rem;
+      transition: var(--transition);
+      box-shadow: 0 6px 14px rgba(70, 23, 143, 0.4);
+      border: 1px solid #7c4dff;
+      letter-spacing: 0.5px;
     }
-    .btn-top:hover { background: #2563eb; transform: scale(1.02); }
+    .btn-kahoot:hover {
+      background: #5e2ab5;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(70, 23, 143, 0.5);
+    }
 
-    .footer { margin-top: 3rem; padding: 1.8rem 0; text-align: center; border-top: 1px solid var(--border-subtle); color: #8da0b5; font-size: 0.9rem; }
+    .footer { margin-top: 3rem; padding: 1.8rem 0; text-align: center; border-top: 1px solid var(--border-subtle); color: #cbd5e1; font-size: 0.9rem; }
     .flex-between { display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
     .text-accent { color: var(--accent-light); font-weight: 600; }
     hr { border: none; height: 1px; background: var(--border-subtle); margin: 2rem 0; }
@@ -201,9 +217,9 @@
       min-height: 70vh; display: flex; flex-direction: column; justify-content: center;
       align-items: center; text-align: center; padding: 2rem 0;
     }
-    .hero-sub { font-size: clamp(1.2rem, 5vw, 1.6rem); color: #b0c9e8; margin-bottom: 1.5rem; font-weight: 400; }
+    .hero-sub { font-size: clamp(1.2rem, 5vw, 1.6rem); color: #cbd5e1; margin-bottom: 1.5rem; font-weight: 400; }
     .highlight-box {
-      background: rgba(15, 31, 44, 0.8); border-radius: 20px; padding: 1.5rem;
+      background: rgba(15, 31, 44, 0.9); border-radius: 20px; padding: 1.5rem;
       border-left: 6px solid var(--accent); backdrop-filter: blur(8px);
     }
 
@@ -224,13 +240,8 @@
         padding-top: 0.5rem;
         border-top: 1px solid var(--border-subtle);
       }
-      .nav-links.active {
-        display: flex;
-      }
-      .nav-links a {
-        padding: 0.5rem 0.2rem;
-        font-size: 1rem;
-      }
+      .nav-links.active { display: flex; }
+      .nav-links a { padding: 0.5rem 0.2rem; font-size: 1rem; }
       .container { padding: 1rem 1.2rem; }
       h2 { font-size: 1.8rem; margin-bottom: 1.2rem; }
       .hero-sub { font-size: 1.2rem; }
@@ -246,7 +257,7 @@
       .hero-sub { font-size: 1.1rem; }
       .card h3 { font-size: 1.2rem; }
       .img-container { padding: 0.9rem; }
-      .btn-top { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
+      .btn-kahoot { padding: 0.7rem 1.5rem; font-size: 1rem; }
       .footer { font-size: 0.8rem; }
     }
 
@@ -458,14 +469,17 @@
       </div>
       <hr>
       <p style="text-align:right; font-style:italic;">“El motherboard es el cimiento de todo el sistema.”</p>
+      
+      <!-- Botón Kahoot -->
+      <div style="text-align:center;">
+        <a href="https://kahoot.it" target="_blank" rel="noopener noreferrer" class="btn-kahoot">🎮 Ir a Kahoot</a>
+      </div>
     </section>
-
-    <div style="text-align:center; margin:2rem 0;"><a href="#portada" class="btn-top">↑ Volver al inicio</a></div>
   </main>
 
   <footer class="footer">
     <div>Contenido basado en PDF: Hardware crítico – Motherboard</div>
-    <div style="margin-top:0.8rem; opacity:0.5;">© Exposición universitaria</div>
+    <div style="margin-top:0.8rem; opacity:0.7;">© Exposición universitaria</div>
   </footer>
 
   <script>
@@ -479,7 +493,6 @@
         });
       }
 
-      // Cerrar menú al hacer clic en un enlace (mejor usabilidad)
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', (e) => {
           navLinks.classList.remove('active');
@@ -492,19 +505,6 @@
         });
       });
 
-      // Botón "Volver al inicio"
-      document.querySelectorAll('.btn-top').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
-
-      // Fallback imágenes
       document.querySelectorAll('img').forEach(img => {
         img.addEventListener('error', function() {
           if (this.style.display === 'none') return;
