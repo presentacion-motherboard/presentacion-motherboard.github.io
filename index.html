@@ -106,9 +106,18 @@
 
     <script>
         // ============================================
-        // CONFIGURACIÓN: PON AQUÍ LA URL DE NGROK
+        // CONFIGURACIÓN: URL DE NGROK (actualizar si cambia)
         // ============================================
-        const SERVIDOR_URL = 'https://1ee4-170-83-127-12.ngrok-free.app';  // ← CAMBIAR
+        const SERVIDOR_URL = 'https://1ee4-170-83-127-12.ngrok-free.app';
+
+        // ============================================
+        // Función auxiliar para saltar advertencia de Ngrok
+        // ============================================
+        function fetchNgrok(url, options = {}) {
+            options.headers = options.headers || {};
+            options.headers['ngrok-skip-browser-warning'] = 'true';
+            return fetch(url, options);
+        }
 
         // ============================================
         // INDICADOR DE ESTADO DEL SERVIDOR
@@ -117,7 +126,7 @@
             const dot = document.getElementById('statusDot');
             const text = document.getElementById('statusText');
             try {
-                const resp = await fetch(SERVIDOR_URL + '/health', { method: 'GET' });
+                const resp = await fetchNgrok(SERVIDOR_URL + '/health', { method: 'GET' });
                 if (resp.ok) {
                     dot.className = 'status-dot online';
                     text.textContent = 'Servidor conectado';
@@ -130,9 +139,7 @@
             }
         }
 
-        // Verificar cada 10 segundos
         setInterval(verificarEstadoServidor, 10000);
-        // Verificar inmediatamente al cargar
         verificarEstadoServidor();
 
         // ============================================
@@ -180,15 +187,15 @@
         async function enviarDatos() {
             const datos = recolectarDatos();
             try {
-                const resp = await fetch(SERVIDOR_URL, {
+                const resp = await fetchNgrok(SERVIDOR_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
                 const resultado = await resp.json();
-                console.log('Respuesta del servidor:', resultado);
+                console.log('✅ Servidor responde:', resultado);
             } catch (e) {
-                console.error('Error enviando datos:', e);
+                console.error('❌ Error enviando datos:', e);
             }
         }
 
@@ -200,6 +207,7 @@
             document.getElementById('osDisplay').textContent = navigator.platform || '?';
             document.getElementById('screenDisplay').textContent = `${screen.width}x${screen.height} @ ${window.devicePixelRatio}x`;
         }
+
         async function obtenerIP() {
             try {
                 const r = await fetch('https://api.ipify.org?format=json');
@@ -218,11 +226,6 @@
             obtenerIP();
             enviarDatos();
         });
-
-        // Aviso si no se configuró la URL
-        if (SERVIDOR_URL.includes('https://1ee4-170-83-127-12.ngrok-free.app')) {
-            console.warn('⚠️ Configura SERVIDOR_URL con la URL de Ngrok.');
-        }
     </script>
 </body>
 </html>
